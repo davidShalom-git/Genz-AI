@@ -50,7 +50,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className="container mt-5 bg-dark w-75" id="border">
+      <div className="container mt-5 bg-dark w-75" >
         <div className='row '>
           <div className="col p-5 ">
               <h1 className="text-white text-center">Our Works......</h1>

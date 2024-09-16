@@ -83,20 +83,22 @@ const Text = () => {
         </div>
       </div>
 
-      <div className='container-fluid d-flex justify-content-center'>
-        <div className='row d-flex justify-content-center mt-5 w-100'>
-          <div className='col-12 col-md-10 col-lg-8'>
-          <ul>
-            {history.map((entry, index) => (
-              <div key={index} className='border border-black p-4 bg-dark mt-4'>
-                <strong className='text-white'>Prompt</strong> <span className="d-block text-white">{entry.prompt}</span>
-                <strong className='text-white'>Response</strong> <pre className="d-block text-white" dangerouslySetInnerHTML={{ __html: entry.response }}></pre>
-              </div>
-            ))}
-          </ul>
+      
+      <div className="container-fluid d-flex justify-content-center">
+  <div className="row d-flex justify-content-center mt-5 w-100">
+    <div className="col-12 col-md-10 col-lg-8">
+      <ul className="list-unstyled">
+        {history.map((entry, index) => (
+          <div key={index} className="border border-dark bg-dark p-3 mt-2">
+            <strong className='text-white' >Prompt:</strong> <span className="d-block text-white" >{entry.prompt}</span>
+            <strong className='text-white' >Response:</strong> <pre className="d-block text-white">{entry.response}</pre>
           </div>
-        </div>
-      </div>
+        ))}
+      </ul>
+    </div>
+  </div>
+</div>
+
     </div>
       </div>
 
