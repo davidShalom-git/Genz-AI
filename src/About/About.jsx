@@ -45,7 +45,7 @@ const About = () => {
             <p className='text-white p-3 text-justify mb-4'>Welcome to GenZAI! GenZAI is a cutting-edge open-source software designed to revolutionize the way you create text and images. By leveraging advanced generative AI models, GenZAI empowers developers, artists, and enthusiasts to generate high-quality content effortlessly. Whether you’re crafting compelling narratives or producing stunning visuals, GenZAI provides an intuitive and flexible platform to bring your cr eative ideas to life. Join our community-driven project and explore the limitless possibilities of generative AI with GenZAI.</p>
           </div>
           <div className='col ms-3 d-flex justify-content-center' id="border2">
-            <img src={Robot2} height="350px" className='rounded'  />
+            <img src={Robot2} height="280px" className='rounded'  />
           </div>
         </div>
       </div>

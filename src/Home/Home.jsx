@@ -39,7 +39,7 @@ const Home = () => {
             <p className='text-dark p-3 text-justify mb-4'>Artificial Intelligence (AI) is a branch of computer science that aims to create machines capable of intelligent behavior, emulating cognitive functions such as learning, reasoning, problem-solving, perception, and language understanding. AI can be categorized into two main types: narrow AI, which is designed for specific tasks (like voice assistants and recommendation systems), and general AI, which is a theoretical concept where machines possess generalized human cognitive abilities.</p>
           </div>
           <div className='col-12 col-md-12 col-lg-6 bg-dark d-flex justify-content-center'>
-            <img src={Robot} height="200px" className='rounded'  />
+            <img src={Robot} height="170px" className='rounded'  />
           </div>
         </div>
       </div>
