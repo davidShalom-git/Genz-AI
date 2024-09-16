@@ -1,0 +1,10 @@
+#border1{
+    border-radius: 70px;
+}
+#border2{
+    border-radius: 50px;
+    padding-right: 70px;
+    padding-left: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}

@@ -1,0 +1,12 @@
+#l1:hover{
+    background-color: white;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 30px;
+    transition: 0.4s;
+    color: black;
+}
+
+#l1{
+    color: white;
+}
