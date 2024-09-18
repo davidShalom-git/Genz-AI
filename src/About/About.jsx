@@ -40,9 +40,9 @@ const About = () => {
 
       <div className='container bg-dark mt-5 'id="border">
         <div className='row'>
-          <div className='col-12 col-md-12 col-lg-6 mt-5 '>
+          <div className='col-12 col-md-12 col-lg-6 mt-3 '>
             <h1 className='text-white text-center mt-4'>Intro</h1>
-            <p className='text-white p-3 text-justify mb-4'>Welcome to GenZAI! GenZAI is a cutting-edge open-source software designed to revolutionize the way you create text and images. By leveraging advanced generative AI models, GenZAI empowers developers, artists, and enthusiasts to generate high-quality content effortlessly. Whether you’re crafting compelling narratives or producing stunning visuals, GenZAI provides an intuitive and flexible platform to bring your cr eative ideas to life. Join our community-driven project and explore the limitless possibilities of generative AI with GenZAI.</p>
+            <p className='text-white p-3 text-justify mb-4'>Welcome to GenZAI! GenZAI is a cutting-edge open-source software designed to revolutionize the way you create text and images. By leveraging advanced generative AI models, GenZAI empowers developers, artists, and enthusiasts to generate high-quality content effortlessly. Whether you're crafting compelling narratives or producing stunning visuals, GenZAI provides an intuitive and flexible platform to bring your cr eative ideas to life. Join our community-driven project and explore the limitless possibilities of generative AI with GenZAI.</p>
           </div>
           <div className='col ms-3 d-flex justify-content-center' id="border2">
             <img src={Robot2} height="280px" className='rounded'  />
@@ -71,7 +71,7 @@ const About = () => {
           <div className='col-12 col-md-12 col-lg-6 col-lg-6 border border-black'>
             <h4 className='text-dark text-center mt-5'>Image Generator</h4>
           <p className='text-dark p-3 text-justify mb-4 mt-5'>Image generator AI refers to artificial intelligence systems that create images based on textual descriptions or other input data. These models, such as DALL-E and Midjourney, utilize deep learning techniques to generate visually coherent and contextually relevant images. They can produce artwork, photorealistic images, and even conceptual designs, offering significant implications for creative industries, design, and content creation. It's essential to verify the information and capabilities of specific image generator AI tools, as they may vary in quality and features.</p>
-          <button className='btn btn-white text-dark mb-4 ms-3 bg-white'><Link to="/images" className='text-dark text-decoration-none fs-6'>Go</Link></button>
+          <button className='btn btn-white text-white ms-3 mb-4 bg-dark'><Link to="/images" className='text-white text-decoration-none fs-6'>Go</Link></button>
           </div>
         </div>
         
