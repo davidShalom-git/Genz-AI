@@ -50,14 +50,14 @@ const Home = () => {
           <div className='col-12 col-md-12 col-lg-6  bg-dark'>
           <h4 className='text-white text-center mt-5'>Text Generator</h4>
           <p className='text-white p-3 text-justify mt-5'>Text generator AI refers to artificial intelligence systems that can produce human-like text based on input prompts. These models, like OpenAI's GPT series, use machine learning techniques to analyze vast amounts of text data and can generate coherent narratives, answer questions, assist in writing, and engage in conversation. They are widely used in content creation, customer support, and education but require careful oversight to ensure accuracy and appropriateness.It's essential to verify the information and capabilities of specific image generator AI tools.</p>
-            <button className='btn btn-white text-dark mb-4 ms-3 bg-white'><Link to="/image"></Link>Go</button>
+            <button className='btn btn-white text-dark mb-4 ms-3 bg-white'><Link to="/text" className='text-dark text-decoration-none'>Go</Link></button>
           </div>
 
 
           <div className='col-12 col-md-12 col-lg-6 col-lg-6 border border-black '>
             <h4 className='text-dark text-center mt-5'>Image Generator</h4>
           <p className='text-dark p-3 text-justify mb-4 mt-5'>Image generator AI refers to artificial intelligence systems that create images based on textual descriptions or other input data. These models, such as DALL-E and Midjourney, utilize deep learning techniques to generate visually coherent and contextually relevant images. They can produce artwork, photorealistic images, and even conceptual designs, offering significant implications for creative industries, design, and content creation. It's essential to verify the information and capabilities of specific image generator AI tools, as they may vary in quality and features.</p>
-            <button className='btn btn-white text-white ms-3 mb-4 bg-dark'><Link to="/image" ></Link>Go</button>
+            <button className='btn btn-white text-white ms-3 mb-4 bg-dark'><Link to="/images" className='text-white text-decoration-none'>Go</Link></button>
           </div>
         </div>
       </div>
