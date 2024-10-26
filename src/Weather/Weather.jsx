@@ -9,15 +9,17 @@ const Weather = () => {
     const [history, setHistory] = useState([]);
 
     const handleCityChange = (e) => setCity(e.target.value);
+
+    
     const fetchWeatherData = async (city) => {
         try {
             const response = await axios.get(
-                `http://api.weatherapi.com/v1/current.json?key=c85bd859291e47bdb2c74027242610&q=${city}`
+                `https://api.weatherapi.com/v1/current.json?key=c85bd859291e47bdb2c74027242610&q=${city}`
             );
             const data = response.data;
             const message = `In ${data.location.name}, it's currently ${data.current.temp_c}°C with ${data.current.condition.text}.`;
             setWeatherData(message);
-            return message; // Return message to use it directly in run
+            return message;
         } catch (error) {
             console.error("Weather API Error:", error);
             const errorMessage = "Could not retrieve weather data.";
@@ -25,6 +27,7 @@ const Weather = () => {
             return errorMessage;
         }
     };
+    
     
 
     const run = async () => {
