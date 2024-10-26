@@ -40,28 +40,18 @@ const News = () => {
         <>
             <header className='navbar bg-dark navbar-dark navbar-expand-sm p-3'>
                 <h2 className='navbar-brand justify-content-start'>
-                    <a href="#" className="nav-link text-white fs-5">GenZ-AI</a>
+                    <Link to="/" className="nav-link text-white fs-5">GenZ-AI</Link>
                 </h2>
                 <button className='navbar-toggler' data-bs-toggle="collapse" data-bs-target="#box">
                     <span className='navbar-toggler-icon'></span>
                 </button>
                 <div className='navbar-collapse collapse justify-content-center' id="box">
                     <div className='navbar-nav'>
-                        <div className='nav-item'>
-                            <Link className='text-white text-decoration-none fs-5' to="/">Home</Link>
-                        </div>
-                        <div className='nav-item'>
-                            <Link className='text-white text-decoration-none fs-5' to="/text">Text</Link>
-                        </div>
-                        <div className='nav-item'>
-                            <Link className='text-white text-decoration-none fs-5' to="/images">Image</Link>
-                        </div>
-                        <div className='nav-item'>
-                            <Link className="text-white text-decoration-none" to="/about">About</Link>
-                        </div>
-                        <div className='nav-item'>
-                            <Link className="text-white text-decoration-none" to="/weather">Weather</Link>
-                        </div>
+                        <Link className='nav-item nav-link text-white text-decoration-none fs-5' to="/">Home</Link>
+                        <Link className='nav-item nav-link text-white text-decoration-none fs-5' to="/text">Text</Link>
+                        <Link className='nav-item nav-link text-white text-decoration-none fs-5' to="/images">Image</Link>
+                        <Link className="nav-item nav-link text-white text-decoration-none fs-5" to="/about">About</Link>
+                        <Link className="nav-item nav-link text-white text-decoration-none fs-5" to="/weather">Weather</Link>
                     </div>
                 </div>
                 <img src={user} alt="User Icon" height="50px" />
