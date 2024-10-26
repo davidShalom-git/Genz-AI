@@ -79,7 +79,7 @@ const News = () => {
                 <div className='container mt-4 d-flex justify-content-center'>
                     <div className='row w-50 '>
                         <div className='col'>
-                            <h1 className='text-center mt-5 border border-black p-3'>Text GPT</h1>
+                            <h1 className='text-center mt-5 border border-black p-3'>News GPT</h1>
                         </div>
                     </div>
                 </div>
