@@ -5,45 +5,42 @@ import user from '../Images/icons8-user-80.png';
 
 const News = () => {
     const [topic, setTopic] = useState('');
+    const [articles, setArticles] = useState([]);
     const [history, setHistory] = useState(JSON.parse(localStorage.getItem('newsHistory')) || []);
+    const [error, setError] = useState(null);
 
     const handleTopicChange = (e) => {
         setTopic(e.target.value);
     };
 
-    const fetchNewsData = async (topic) => {
+    const fetchNewsData = async () => {
         try {
-            const response = await axios.get(
-                `https://newsapi.org/v2/everything?q=${topic}&apiKey=5e97105f83bf4c019ca38751f659cb89`,
-                {
-                    headers: {
-                        'Upgrade': 'HTTP/2.0' // Adding this header can resolve the 426 error if HTTP/2 is required
-                    }
+            const response = await axios.get(`https://newsapi.org/v2/everything`, {
+                params: {
+                    q: topic,
+                    apiKey: '5e97105f83bf4c019ca38751f659cb89' // replace with your actual API key
                 }
-            );
-            const articles = response.data.articles.slice(0, 3);
-            return articles.map(article => `- ${article.title}`).join('\n');
+            });
+            const articles = response.data.articles.slice(0, 3); // Get the top 3 articles
+            setArticles(articles);
+
+            // Save to history
+            const newEntry = { prompt: topic, response: articles };
+            const updatedHistory = [...history, newEntry];
+            setHistory(updatedHistory);
+            localStorage.setItem('newsHistory', JSON.stringify(updatedHistory));
+            setError(null); // Reset error
         } catch (error) {
             console.error("News API Error:", error);
-            return "Could not retrieve news data.";
+            setError("Failed to fetch news data. Please try again.");
         }
-    };
-    
-
-    const fetchAndSaveNews = async () => {
-        const newsData = await fetchNewsData(topic);
-        const newEntry = { prompt: topic, response: newsData };
-        const updatedHistory = [...history, newEntry];
-        setHistory(updatedHistory);
-        localStorage.setItem('newsHistory', JSON.stringify(updatedHistory));
-        setTopic(''); // Clear the topic input after submission
     };
 
     return (
         <>
             <header className='navbar bg-dark navbar-dark navbar-expand-sm p-3'>
                 <h2 className='navbar-brand justify-content-start'>
-                    <a href="" className="nav-link text-white fs-5">GenZ-AI</a>
+                    <a href="#" className="nav-link text-white fs-5">GenZ-AI</a>
                 </h2>
                 <button className='navbar-toggler' data-bs-toggle="collapse" data-bs-target="#box">
                     <span className='navbar-toggler-icon'></span>
@@ -51,72 +48,72 @@ const News = () => {
                 <div className='navbar-collapse collapse justify-content-center' id="box">
                     <div className='navbar-nav'>
                         <div className='nav-item'>
-                            <a href="#" className="nav-link fs-5" id="">
-                                <Link className='text-white text-decoration-none fs-5' to="/">Home</Link>
-                            </a>
+                            <Link className='text-white text-decoration-none fs-5' to="/">Home</Link>
                         </div>
                         <div className='nav-item'>
-                            <a href="#" className="nav-link" id="l2">
-                                <Link className='text-white text-decoration-none fs-5' to="/text">Text</Link>
-                            </a>
+                            <Link className='text-white text-decoration-none fs-5' to="/text">Text</Link>
                         </div>
                         <div className='nav-item'>
-                            <a href="#" className="nav-link fs-5" id="l5">
-                                <Link className='text-white text-decoration-none fs-5' to="/images">Image</Link>
-                            </a>
+                            <Link className='text-white text-decoration-none fs-5' to="/images">Image</Link>
                         </div>
                         <div className='nav-item'>
-                            <a href="#" className="nav-link fs-5" id="">
-                                <Link to="/about" className="text-white text-decoration-none">About</Link>
-                            </a>
+                            <Link className="text-white text-decoration-none" to="/about">About</Link>
                         </div>
                         <div className='nav-item'>
-                            <a href="#" className="nav-link fs-5" id="">
-                                <Link to="/weather" className="text-white text-decoration-none">Weather</Link>
-                            </a>
+                            <Link className="text-white text-decoration-none" to="/weather">Weather</Link>
                         </div>
                     </div>
                 </div>
-                <div className=''>
-                    <img src={user} alt="Robo-hand" height="50px" />
-                </div>
+                <img src={user} alt="User Icon" height="50px" />
             </header>
-            <div>
-                <div className='container mt-4 d-flex justify-content-center'>
-                    <div className='row w-50 '>
-                        <div className='col'>
-                            <h1 className='text-center mt-5 border border-black p-3'>News GPT</h1>
-                        </div>
+
+            <div className='container mt-4 d-flex justify-content-center'>
+                <div className='row w-50'>
+                    <div className='col'>
+                        <h1 className='text-center mt-5 border border-black p-3'>News GPT</h1>
                     </div>
                 </div>
-                <div className='container d-flex justify-content-center mt-3'>
-                    <div className='row '>
-                        <div className='col-12 col-md-12 col-sm-12 w-100'>
-                            <input type='text' className='form-control' placeholder='Enter the prompt' onChange={handleTopicChange} value={topic}></input>
-                        </div>
-                        <div className='col d-flex justify-content-center'>
-                            <button className='btn btn-dark w-75 mt-2' onClick={fetchAndSaveNews}>Generate</button>
-                        </div>
-                    </div>
-                </div>
-                <div className="container-fluid d-flex justify-content-center">
-                    <div className="row d-flex justify-content-center mt-5 w-100">
-                        <div className="col-12 col-md-10 col-lg-8">
-                            <ul className="list-unstyled">
-                                {history.map((entry, index) => (
-                                    <div key={index} className="border border-dark bg-dark p-3 mt-2">
-                                        <strong className='text-white'>Prompt:</strong> <span className="d-block text-white">{entry.prompt}</span>
-                                        <strong className='text-white'>Response:</strong> <pre className="d-block text-white">{entry.response}</pre>
-                                    </div>
-                                ))}
-                            </ul>
-                        </div>
+            </div>
+
+            <div className='container d-flex justify-content-center mt-3'>
+                <input
+                    type='text'
+                    className='form-control'
+                    placeholder='Enter a topic'
+                    onChange={handleTopicChange}
+                    value={topic}
+                />
+                <button className='btn btn-dark w-75 mt-2' onClick={fetchNewsData}>Generate</button>
+            </div>
+
+            {error && <p className="text-danger text-center mt-3">{error}</p>}
+
+            <div className="container-fluid d-flex justify-content-center">
+                <div className="row d-flex justify-content-center mt-5 w-100">
+                    <div className="col-12 col-md-10 col-lg-8">
+                        <ul className="list-unstyled">
+                            {history.map((entry, index) => (
+                                <div key={index} className="border border-dark bg-dark p-3 mt-2">
+                                    <strong className='text-white'>Prompt:</strong>
+                                    <span className="d-block text-white">{entry.prompt}</span>
+                                    <strong className='text-white'>Response:</strong>
+                                    <ul>
+                                        {entry.response.map((article, idx) => (
+                                            <li key={idx} className="text-white">
+                                                <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-white">
+                                                    {article.title}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
+                        </ul>
                     </div>
                 </div>
             </div>
         </>
     );
-
 };
 
 export default News;
