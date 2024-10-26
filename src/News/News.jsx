@@ -14,7 +14,7 @@ const News = () => {
     const fetchNewsData = async (topic) => {
         try {
             const response = await axios.get(
-                `https://newsapi.org/v2/everything?q=${topic}&apiKey=${import.meta.env.VITE_NEWS_API_KEY}`
+                `https://newsapi.org/v2/everything?q=${topic}&apiKey=5e97105f83bf4c019ca38751f659cb89`
             );
             const articles = response.data.articles.slice(0, 3);
             return articles.map(article => `- ${article.title}`).join('\n');

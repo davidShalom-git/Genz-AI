@@ -9,11 +9,10 @@ const Weather = () => {
     const [history, setHistory] = useState([]);
 
     const handleCityChange = (e) => setCity(e.target.value);
-
     const fetchWeatherData = async (city) => {
         try {
             const response = await axios.get(
-                `http://api.weatherapi.com/v1/current.json?key=${import.meta.env.VITE_WEATHER_API_KEY}&q=${city}`
+                `http://api.weatherapi.com/v1/current.json?key=c85bd859291e47bdb2c74027242610&q=${city}`
             );
             const data = response.data;
             const message = `In ${data.location.name}, it's currently ${data.current.temp_c}°C with ${data.current.condition.text}.`;
@@ -26,6 +25,7 @@ const Weather = () => {
             return errorMessage;
         }
     };
+    
 
     const run = async () => {
         const responseMessage = await fetchWeatherData(city); // Get message from fetchWeatherData
