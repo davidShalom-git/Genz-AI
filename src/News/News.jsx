@@ -14,7 +14,12 @@ const News = () => {
     const fetchNewsData = async (topic) => {
         try {
             const response = await axios.get(
-                `https://newsapi.org/v2/everything?q=${topic}&apiKey=5e97105f83bf4c019ca38751f659cb89`
+                `https://newsapi.org/v2/everything?q=${topic}&apiKey=5e97105f83bf4c019ca38751f659cb89`,
+                {
+                    headers: {
+                        'Upgrade': 'HTTP/2.0' // Adding this header can resolve the 426 error if HTTP/2 is required
+                    }
+                }
             );
             const articles = response.data.articles.slice(0, 3);
             return articles.map(article => `- ${article.title}`).join('\n');
@@ -23,6 +28,7 @@ const News = () => {
             return "Could not retrieve news data.";
         }
     };
+    
 
     const fetchAndSaveNews = async () => {
         const newsData = await fetchNewsData(topic);
