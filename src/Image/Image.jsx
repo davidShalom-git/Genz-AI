@@ -74,6 +74,9 @@ const Image = () => {
           <div className='nav-item'>
             <Link className='text-white text-decoration-none fs-5 nav-link' to="/about">About</Link>
           </div>
+          <div className='nav-item'>
+            <Link className='text-white text-decoration-none fs-5 nav-link' to="/news">News</Link>
+          </div>
         </div>
       </div>
       <div>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import './Text.css';
 import { Link } from 'react-router-dom';
 import user from '../Images/icons8-user-80.png';
@@ -7,42 +6,60 @@ import user from '../Images/icons8-user-80.png';
 const Text = () => {
     const [prm,setprm] = useState('');
     const [history,setHistory] = useState([]);
-    let apiKey = "AIzaSyApSWw6KU2qGthpjN3BRgdRqJ8BqBC5KNk"
-    const genAI = new GoogleGenerativeAI(apiKey);
 
-    const model = genAI.getGenerativeModel({
-      model: 'gemini-1.5-flash',
-    });
-
-    const generationConfig = {
-      temperature: 1,
-      topP: 0.95,
-      topK: 64,
-      maxOutputTokens: 8192,
-      responseMimeType: 'text/plain',
+    
+    const fetchAI21Response = async (userPrompt) => {
+      try {
+        const response = await fetch("https://api.ai21.com/studio/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${import.meta.env.VITE_AI21_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            "model": "jamba-1.5-large",
+            "messages": [{ role: "user", content: userPrompt }],
+            "documents": [],
+            "tools": [],
+            "n": 1,
+            "max_tokens": 2048,
+            "temperature": 0.4,
+            "top_p": 1,
+            "stop": [],
+            "response_format": { "type": "text" },
+          }),
+        });
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        console.log("AI21 API Response:", data); // Log the entire response for debugging
+        
+        if (data.choices && data.choices.length > 0) {
+          return data.choices[0].message.content;
+        } else {
+          throw new Error("No completions found in the response.");
+        }
+      } catch (error) {
+        console.error("AI21 API Error:", error);
+        return "Sorry, I couldn't process your request.";
+      }
     };
-
-    const prompt = (e) => {
-      const values = e.target.value;
-      setprm(values)
-    };
-
-    const run = async() =>{
-      const chatSession = model.startChat({
-        generationConfig,
-        history: [],
-      })
-
-      const result = await chatSession.sendMessage(prm);
-      let responseText = await result.response.text();
-      responseText = responseText.split('.').join('./n');
-
-      const newEntry = {prompt: prm, response: responseText};
-      let updatedHistory = [...history,newEntry];
-      setHistory(updatedHistory);
-      localStorage.setItem('history',JSON.stringify(updatedHistory));
-      setprm("");
-    }
+    
+    const handleInputChange = (e) => {
+      setprm(e.target.value);
+  };
+  const run = async () =>{
+    let responseText;
+    responseText = await fetchAI21Response(prm);
+    const newEntry = { prompt: prm,response: responseText };
+    const updatedHistory = [...history, newEntry];
+    setHistory(updatedHistory);
+    localStorage.setItem('history', JSON.stringify(updatedHistory));
+    setprm("");
+  }
 
 
   return (
@@ -56,6 +73,7 @@ const Text = () => {
             <div className='nav-item'><a href="#" className="nav-link" id="l2"><Link className='text-white text-decoration-none fs-5' to="/text">Text</Link></a></div>
             <div className='nav-item'><a href="#" className="nav-link fs-5" id="l5"><Link className='text-white text-decoration-none fs-5' to="/images">Image</Link></a></div>
             <div className='nav-item'><a href="#" className="nav-link fs-5" id=""><Link to="/about" className="text-white text-decoration-none">About</Link></a></div>
+            <div className='nav-item'><a href="#" className="nav-link fs-5" id=""><Link to="/weather" className="text-white text-decoration-none">Weather</Link></a></div>
           </div>
         </div>
         <div className=''>
@@ -75,7 +93,7 @@ const Text = () => {
       <div className='container d-flex justify-content-center mt-3'>
         <div className='row '>
           <div className='col-12 col-md-12 col-sm-12 w-100'>
-            <input type='text' className='form-control' placeholder='Enter the prompt' onChange={prompt} value={prm}></input>
+            <input type='text' className='form-control' placeholder='Enter the prompt' onChange={handleInputChange} value={prm}></input>
           </div>
           <div className='col d-flex justify-content-center'>
             <button className='btn btn-dark w-75 mt-2' onClick={run}>Generate</button>
