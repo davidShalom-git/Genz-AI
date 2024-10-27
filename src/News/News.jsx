@@ -81,7 +81,7 @@ const News = () => {
                                 <div key={index} className="border border-dark bg-dark p-3 mt-2">
                                     <strong className='text-white'>Prompt:</strong>
                                     <span className="d-block text-white">{entry.prompt}</span>
-                                    <strong className='text-white'>Response:</strong>
+                                    <strong className='text-white text-decoration-none'>Response:</strong>
                                     <ul>
                                         {entry.response.map((article, idx) => (
                                             <li key={idx} className="text-white">
