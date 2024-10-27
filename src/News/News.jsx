@@ -23,7 +23,6 @@ const News = () => {
             });
             const articles = response.data.articles.slice(0, 3); // Get the top 3 articles
             setArticles(articles);
-
             // Save to history
             const newEntry = { prompt: topic, response: articles };
             const updatedHistory = [...history, newEntry];
@@ -56,7 +55,6 @@ const News = () => {
                 </div>
                 <img src={user} alt="User Icon" height="50px" />
             </header>
-
             <div className='container mt-4 d-flex justify-content-center'>
                 <div className='row w-50'>
                     <div className='col'>
@@ -64,7 +62,6 @@ const News = () => {
                     </div>
                 </div>
             </div>
-
             <div className='container d-flex justify-content-center mt-3'>
                 <input
                     type='text'
@@ -75,9 +72,7 @@ const News = () => {
                 />
                 <button className='btn btn-dark w-75 mt-2' onClick={fetchNewsData}>Generate</button>
             </div>
-
             {error && <p className="text-danger text-center mt-3">{error}</p>}
-
             <div className="container-fluid d-flex justify-content-center">
                 <div className="row d-flex justify-content-center mt-5 w-100">
                     <div className="col-12 col-md-10 col-lg-8">
