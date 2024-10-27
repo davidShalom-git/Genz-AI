@@ -4,7 +4,6 @@ import Home from './Home/Home';
 import About from './About/About';
 import Image from './Image/Image';
 import Weather from './Weather/Weather';
-import News from './News/News';
 
 
 function App() {
@@ -18,7 +17,6 @@ function App() {
       <Route path="/images" element={<Image />} />
       <Route path="/about" element={<About />} />
       <Route path="/weather" element={<Weather />} />
-      <Route path="/news" element={<News />} />
     </Routes>
     </BrowserRouter>
      

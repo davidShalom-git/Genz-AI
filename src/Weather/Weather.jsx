@@ -14,7 +14,7 @@ const Weather = () => {
     const fetchWeatherData = async (city) => {
         try {
             const response = await axios.get(
-                `https://api.weatherapi.com/v1/current.json?key=c85bd859291e47bdb2c74027242610&q=${city}`
+                `https://api.weatherapi.com/v1/current.json?key=d569fd118f6c4453956124923242710&q=${city}`
             );
             const data = response.data;
             const message = `In ${data.location.name}, it's currently ${data.current.temp_c}°C with ${data.current.condition.text}.`;
