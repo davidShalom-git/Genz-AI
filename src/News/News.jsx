@@ -20,7 +20,7 @@ const News = () =>{
                 params:
                 {
                     q: topic,
-                    apikey: '5e97105f83bf4c019ca38751f659cb89'
+                    apikey: `${import.meta.env.VITE_NEWS_API_KEY}`
                 }
             })
 
