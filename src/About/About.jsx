@@ -6,6 +6,10 @@ import Deepak from '../Images/deepak.png';
 import David from '../Images/david.png';
 import adhi from '../Images/adh.png';
 import vetri from '../Images/vet.png';
+import Elon from '../Images/Elon musk.jpg'
+import Mark from '../Images/Mark.jpg'
+import Gates from '../Images/Bill gates.jpg'
+import Sundar from '../Images/Sundar.jpg'
 import './About.css';
 
 const About = () => {
@@ -115,6 +119,45 @@ const About = () => {
          </div>
         </div>
       </div>
+
+      <h1 className='text-center mb-5 mt-5'>GenZ-AI Investors</h1>
+
+<div className='container mb-5'>
+  <div className='row'>
+   <div className='col-12 col-md-6 border border-black'>
+    <div className='d-flex justify-content-center mt-3'>
+      <img src={Elon} height="300px"></img>
+    </div>
+    <div className='d-flex justify-content-center'>
+      <h5 className='text-center bg-dark text-white w-25 mt-4 justify-content-center p-2'>Elon Musk</h5>
+    </div>
+   </div>
+   <div className='col-12 col-md-6 border border-black p-3 bg-dark'>
+    <div className='d-flex justify-content-center'>
+      <img src={Mark} height="300px"></img>
+    </div>
+    <div className='d-flex justify-content-center'>
+      <h5 className='text-center bg-dark text-white w-25 mt-4 justify-content-center p-2'>Mark</h5>
+    </div>
+   </div>
+   <div className='col-12 col-md-6 border border-black mt-3 p-3 bg-dark'>
+    <div className='d-flex justify-content-center'>
+      <img src={Gates} height="300px"></img>
+    </div>
+    <div className='d-flex justify-content-center'>
+      <h5 className='text-center bg-dark text-white w-25 mt-4 justify-content-center p-2'>Bill Gates</h5>
+    </div>
+   </div>
+   <div className='col-12 col-md-6 border border-black mt-3 p-3 '>
+    <div className='d-flex justify-content-center'>
+      <img src={Sundar} height="300px"></img>
+    </div>
+    <div className='d-flex justify-content-center'>
+      <h5 className='text-center bg-dark text-white w-25 mt-4 justify-content-center p-2'>Sundar</h5>
+    </div>
+   </div>
+  </div>
+</div>
 
        
       <div className="container mt-5 bg-dark mb-3 w-75" id="border">
