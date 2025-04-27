@@ -17,7 +17,7 @@ const Image = () => {
         headers: {
           'Content-type': 'application/json',
           Accept: 'application/json',
-          Authorization: 'Bearer sk-lJSeWNDvEVYN9jmDgwGyPhuYeMwCZcSjZMvwkAsKeCuFQc1I',
+          Authorization: 'Bearer sk-eQ1TpD3xktelxaYK9UVvolcFn5wyzKKFOdr6J4CpqL6tDjZh',
         },
         body: JSON.stringify({
           text_prompts: [
