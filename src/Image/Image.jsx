@@ -5,7 +5,7 @@ import user from '../Images/icons8-user-80.png'
 
 const Image = () => {
   const [image, setImage] = useState('/');
-  const inputRef = useRef(null);
+  const inputRef = useRef(null)
 
   const createImage = async () => {
     if (!inputRef.current.value) {
